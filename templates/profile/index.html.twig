@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+    {% if is_granted('ROLE_STUDENT') %}
+        <p>You're a student</p>
+    {% elseif is_granted('ROLE_TEACHER') %}
+        <p>You're a teacher</p>
+    {% endif %}
+{% endblock %}
