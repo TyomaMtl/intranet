@@ -19,17 +19,32 @@
         </div>
         <div class="uk-width-expand">
             <ul id="component-tab-right" class="uk-switcher">
-                {# SUBJECTS #}
                 <li>
-                    {% if user.subjects != null %}
-                        {% for subject in user.subjects %}
-                            <ul class="uk-list uk-list-divider">
-                                <li>{{ subject.name }}</li>
-                            </ul>
-                        {% endfor %}
-                    {% else %}
-                        <div class="uk-alert-primary" uk-alert>You did not subscribe to a subject yet</div>
-                    {% endif %}
+                    {# SUBJECTS #}
+                    <table class="uk-table uk-table-middle uk-table-divider">
+                        <thead>
+                            <tr>
+                                <th class="uk-width-small">Subjects</th>
+                                <th>Content</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if user.subjects != null %}
+                                {% for subject in user.subjects %}
+                                    <tr>
+                                        <td>{{ subject.name }}</td>
+                                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
+                                        {% if is_granted('ROLE_STUDENT') %}
+                                            <td><a href="{{ path('subject_unsubscribe', { subjectId: subject.id }) }}" class="uk-button uk-button-default" type="button">Unsubscribe</a></td>
+                                        {% endif %}
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <div class="uk-alert-primary" uk-alert>You did not subscribe to a subject yet</div>
+                            {% endif %}
+                        </tbody>
+                    </table>
                 </li>   
                 {# ITEM #}
                 <li></li>
