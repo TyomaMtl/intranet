@@ -3,9 +3,39 @@
 {% block title %}Profile{% endblock %}
 
 {% block body %}
+    <h1>{{ user.firstname }} {{ user.lastname }}</h1>
     {% if is_granted('ROLE_STUDENT') %}
         <p>You're a student</p>
     {% elseif is_granted('ROLE_TEACHER') %}
         <p>You're a teacher</p>
     {% endif %}
+    <div class="uk-grid">
+        <div class="uk-width-1-5 uk-flex-last">
+            <ul class="uk-tab-right" uk-tab="connect: #component-tab-right; animation: uk-animation-fade">
+                <li><a href="#">Subjects</a></li>
+                <li><a class="uk-disabled" href="#">Item</a></li>
+                <li><a class="uk-disabled" href="#">Item</a></li>
+            </ul>
+        </div>
+        <div class="uk-width-expand">
+            <ul id="component-tab-right" class="uk-switcher">
+                {# SUBJECTS #}
+                <li>
+                    {% if user.subjects != null %}
+                        {% for subject in user.subjects %}
+                            <ul class="uk-list uk-list-divider">
+                                <li>{{ subject.name }}</li>
+                            </ul>
+                        {% endfor %}
+                    {% else %}
+                        <div class="uk-alert-primary" uk-alert>You did not subscribe to a subject yet</div>
+                    {% endif %}
+                </li>   
+                {# ITEM #}
+                <li></li>
+                {# ITEM #}
+                <li></li>
+            </ul>
+        </div>
+    </div>
 {% endblock %}
