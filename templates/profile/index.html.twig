@@ -13,7 +13,7 @@
         <div class="uk-width-1-5 uk-flex-last">
             <ul class="uk-tab-right" uk-tab="connect: #component-tab-right; animation: uk-animation-fade">
                 <li><a href="#">Subjects</a></li>
-                <li><a class="uk-disabled" href="#">Item</a></li>
+                <li><a href="#">Marks</a></li>
                 <li><a class="uk-disabled" href="#">Item</a></li>
             </ul>
         </div>
@@ -46,8 +46,33 @@
                         </tbody>
                     </table>
                 </li>   
-                {# ITEM #}
-                <li></li>
+                {# MARKS #}
+                <li>
+                    <table class="uk-table uk-table-middle uk-table-divider">
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th class="uk-width-small">Mark</th>
+                                <th>Out Of</th>
+                                <th>Teacher</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if user.marks != null %}
+                                {% for mark in user.marks %}
+                                    <tr>
+                                        <td>{{ mark.subject.name }}</td>
+                                        <td>{{ mark.mark }}</td>
+                                        <td>{{ mark.outof }}</td>
+                                        <td>{{ mark.teacher.firstname }} {{ mark.teacher.lastname }}</td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <div class="uk-alert-primary" uk-alert>You don't have marks yet</div>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </li>
                 {# ITEM #}
                 <li></li>
             </ul>
