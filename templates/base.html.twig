@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/uikit.min.css') }}">{% endblock %}
     </head>
     <body>
         <nav>
@@ -18,6 +18,6 @@
             </ul>
         </nav>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}<script src="{{ asset('js/uikit.min.js') }}"></script>{% endblock %}
     </body>
 </html>
