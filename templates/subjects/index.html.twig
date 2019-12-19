@@ -3,11 +3,28 @@
 {% block title %}Subjects{% endblock %}
 
 {% block body %}
-<div>
-    <ul class="uk-list uk-list-divider">
-        {% for subject in subjects %}
-            <li>{{ subject.name }}</li>
-        {% endfor %}
-    </ul>
-</div>
+    <table class="uk-table uk-table-middle uk-table-divider">
+        <thead>
+            <tr>
+                <th class="uk-width-small">Subjects</th>
+                <th>Content</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for subject in subjects %}
+                <tr>
+                    <td>{{ subject.name }}</td>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
+                    {% if is_granted('ROLE_STUDENT') %}
+                        {% if subject in app.user.subjects %}
+                            <td><a href="{{ path('subject_unsubscribe', { subjectId: subject.id }) }}" class="uk-button uk-button-default" type="button">Unsubscribe</a></td>
+                        {% else %}
+                            <td><a href="{{ path('subject_subscribe', { subjectId: subject.id }) }}" class="uk-button uk-button-default" type="button">Subscribe</a></td>
+                        {% endif %}
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
