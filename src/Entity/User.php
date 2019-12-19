@@ -52,9 +52,15 @@ class User implements UserInterface
      */
     private $subjects;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Mark", mappedBy="student")
+     */
+    private $marks;
+
     public function __construct()
     {
         $this->subjects = new ArrayCollection();
+        $this->marks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -182,6 +188,37 @@ class User implements UserInterface
         if ($this->subjects->contains($subject)) {
             $this->subjects->removeElement($subject);
             $subject->removeUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Mark[]
+     */
+    public function getMarks(): Collection
+    {
+        return $this->marks;
+    }
+
+    public function addMark(Mark $mark): self
+    {
+        if (!$this->marks->contains($mark)) {
+            $this->marks[] = $mark;
+            $mark->setStudent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMark(Mark $mark): self
+    {
+        if ($this->marks->contains($mark)) {
+            $this->marks->removeElement($mark);
+            // set the owning side to null (unless already changed)
+            if ($mark->getStudent() === $this) {
+                $mark->setStudent(null);
+            }
         }
 
         return $this;

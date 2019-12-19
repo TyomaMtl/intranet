@@ -28,9 +28,15 @@ class Subject
      */
     private $users;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Mark", mappedBy="subject")
+     */
+    private $marks;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
+        $this->marks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -71,6 +77,37 @@ class Subject
     {
         if ($this->users->contains($user)) {
             $this->users->removeElement($user);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Mark[]
+     */
+    public function getMarks(): Collection
+    {
+        return $this->marks;
+    }
+
+    public function addMark(Mark $mark): self
+    {
+        if (!$this->marks->contains($mark)) {
+            $this->marks[] = $mark;
+            $mark->setSubject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMark(Mark $mark): self
+    {
+        if ($this->marks->contains($mark)) {
+            $this->marks->removeElement($mark);
+            // set the owning side to null (unless already changed)
+            if ($mark->getSubject() === $this) {
+                $mark->setSubject(null);
+            }
         }
 
         return $this;
