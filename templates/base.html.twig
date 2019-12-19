@@ -10,6 +10,9 @@
             <div class="uk-navbar-left">
                 <ul  class="uk-navbar-nav">
                     <li><a href="{{ path('home') }}">Home</a></li>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li><a href="{{ path('subjects') }}">Subjects</a></li>
+                    {% endif %}
                 </ul>
             </div>
             <div class="uk-navbar-right">
