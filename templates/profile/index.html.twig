@@ -4,11 +4,6 @@
 
 {% block body %}
     <h1>{{ user.firstname }} {{ user.lastname }}</h1>
-    {% if is_granted('ROLE_STUDENT') %}
-        <p>You're a student</p>
-    {% elseif is_granted('ROLE_TEACHER') %}
-        <p>You're a teacher</p>
-    {% endif %}
     <div class="uk-grid">
         <div class="uk-width-1-5 uk-flex-last">
             <ul class="uk-tab-right" uk-tab="connect: #component-tab-right; animation: uk-animation-fade">

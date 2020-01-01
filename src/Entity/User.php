@@ -97,12 +97,10 @@ class User implements UserInterface
     {
         $roles = $this->roles;
 
-        $roles[] = 'ROLE_STUDENT';
-
         return array_unique($roles);
     }
 
-    public function setRoles(array $roles): self
+    public function setRoles(Array $roles = ["ROLE_STUDENT"]): self
     {
         $this->roles = $roles;
 

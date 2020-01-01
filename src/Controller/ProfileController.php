@@ -19,6 +19,8 @@ class ProfileController extends AbstractController
      */
     public function index()
     {
+        dump($this->user->getRoles());
+        
         return $this->render('profile/index.html.twig', [
             'user' => $this->user
         ]);
