@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+        {{ form_row(form.firstname)}}
+        {{ form_row(form.lastname)}}
+        {{ form_row(form.email)}}
+        {{ form_row(form.roles)}}
+        {{ form_row(form.subjects)}}
+        <button class="uk-button">Save</button>
+    {{ form_end(form) }}
+
+{% endblock %}

@@ -21,6 +21,7 @@
                             <tr>
                                 <th class="uk-width-small">Firstname</th>
                                 <th>Lastname</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -28,6 +29,7 @@
                                 <tr>
                                     <td>{{ user.firstname }}</td>
                                     <td>{{ user.lastname }}</td>
+                                    <td><a href="{{ path('admin_show_user', { userId: user.id }) }}" class="uk-button uk-button-default" type="button">Show</a></td>
                                 </tr>
                             {% endfor %}
                         </tbody>
