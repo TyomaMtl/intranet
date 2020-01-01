@@ -15,13 +15,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class SubjectsController extends AbstractController
 {
     private $user;
-    private $sujects;
+    private $subjects;
     private $manager;
 
-    public function __construct(Security $security, SubjectRepository $sujects, EntityManagerInterface $manager)
+    public function __construct(Security $security, SubjectRepository $subjects, EntityManagerInterface $manager)
     {
         $this->user = $security->getUser();
-        $this->subjects = $sujects;
+        $this->subjects = $subjects;
         $this->manager = $manager;
     }
 
