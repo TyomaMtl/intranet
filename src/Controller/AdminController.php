@@ -12,13 +12,20 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
  */
 class AdminController extends AbstractController
 {
+    private $users;
+
+    public function __construct(UserRepository $users)
+    {
+        $this->users = $users;
+    }
+
     /**
      * @Route("/admin", name="admin")
      */
     public function index()
     {
         return $this->render('admin/index.html.twig', [
-            'controller_name' => 'AdminController',
+            'users' => $this->users->findAll(),
         ]);
     }
 }
