@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Administration!{% endblock %}
+{% block title %}Administration{% endblock %}
 
 {% block body %}
     <h1>Administration</h1>
@@ -8,6 +8,7 @@
         <div class="uk-width-1-5 uk-flex-last">
             <ul class="uk-tab-right" uk-tab="connect: #component-tab-right; animation: uk-animation-fade">
                 <li><a href="#">Users</a></li>
+                <li><a href="#">Subjects</a></li>
                 <li><a class="uk-disabled" href="#">Item</a></li>
             </ul>
         </div>
@@ -32,6 +33,23 @@
                         </tbody>
                     </table>
                 </li>   
+                <li>
+                    {# SUBJECTS #}
+                    <table class="uk-table uk-table-middle uk-table-divider">
+                        <thead>
+                            <tr>
+                                <th class="uk-width-small">Subject</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for subject in subjects %}
+                                <tr>
+                                    <td>{{ subject.name }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </li>
                 {# ITEM #}
                 <li></li>
             </ul>
