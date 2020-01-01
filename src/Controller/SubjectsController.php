@@ -9,6 +9,9 @@ use Symfony\Component\Security\Core\Security;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+/**
+ * @IsGranted("IS_AUTHENTICATED_FULLY")
+ */
 class SubjectsController extends AbstractController
 {
     private $user;
