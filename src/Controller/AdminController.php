@@ -70,4 +70,14 @@ class AdminController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/admin/subject/{subjectId}", name="admin_show_subject")
+     */
+    public function subject(int $subjectId)
+    {
+        return $this->render('admin/show_subject.html.twig', [
+            'subject' => $this->subjects->findById($subjectId)[0],
+        ]);
+    }
 }

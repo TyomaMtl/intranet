@@ -47,6 +47,7 @@
                             {% for subject in subjects %}
                                 <tr>
                                     <td>{{ subject.name }}</td>
+                                    <td><a href="{{ path('admin_show_subject', { subjectId: subject.id }) }}" class="uk-button uk-button-default" type="button">Show</a></td>
                                 </tr>
                             {% endfor %}
                         </tbody>
