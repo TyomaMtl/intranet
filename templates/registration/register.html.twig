@@ -5,11 +5,56 @@
 {% block body %}
     <h1>Register</h1>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+    <div class="uk-grid">
+        <div>
+            {{ form_start(registrationForm) }}
+                <div class="uk-margin">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: user"></span>
+                        {{ form_widget(registrationForm.firstname, {'attr': {'class': 'uk-input uk-form-width-large', 'placeholder': 'Firstname'}}) }}
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: users"></span>
+                        {{ form_widget(registrationForm.lastname, {'attr': {'class': 'uk-input uk-form-width-large', 'placeholder': 'Lastname'}}) }}
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                        {{ form_widget(registrationForm.email, {'attr': {'class': 'uk-input uk-form-width-large', 'placeholder': 'E-Mail'}}) }}
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <div class="uk-inline">
+                        <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                        {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'uk-input uk-form-width-large', 'placeholder': 'Password'}}) }}
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <div class="uk-inline">
+                        {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'uk-checkbox'}}) }}
+                        {{ form_label(registrationForm.agreeTerms) }}
+                    </div>
+                </div>
 
-        <button class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+                <button class="uk-button">Register</button>
+            {{ form_end(registrationForm) }}
+        </div>
+
+        <div>
+            <div class="uk-grid">
+                <div>
+                    <div class="uk-divider-vertical"></div>
+                    <p>OR</p>
+                    <div class="uk-divider-vertical"></div>
+                </div>
+                <div>
+                    <a style="margin-top: 112px; margin-left: 50px" class="uk-button uk-button-default" href="{{ path('login') }}">Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
