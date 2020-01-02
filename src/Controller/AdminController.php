@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Subject;
 use App\Repository\SubjectRepository;
 use App\Repository\UserRepository;
 use App\Form\ManageUserType;
+use App\Form\SubjectType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -78,6 +80,31 @@ class AdminController extends AbstractController
     {
         return $this->render('admin/show_subject.html.twig', [
             'subject' => $this->subjects->findById($subjectId)[0],
+        ]);
+    }
+
+    /**
+     * @Route("/admin/add/subject", name="admin_add_subject")
+     */
+    public function subject_add(Request $request)
+    {
+        $subject = new Subject;
+
+        $form = $this->createForm(SubjectType::class, $subject);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($form->getData());
+            $em->flush();
+
+            return $this->redirectToRoute('admin');
+        }
+
+        return $this->render('admin/add_subject.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 }
