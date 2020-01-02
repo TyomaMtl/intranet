@@ -34,6 +34,9 @@
         <div class="uk-container">
             {% block body %}{% endblock %}
         </div>
-        {% block javascripts %}<script src="{{ asset('js/uikit.min.js') }}"></script>{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('js/uikit.min.js') }}"></script>
+            <script src="{{ asset('js/uikit-icons.min.js') }}"></script>
+        {% endblock %}
     </body>
 </html>
