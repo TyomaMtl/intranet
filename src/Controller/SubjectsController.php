@@ -36,6 +36,21 @@ class SubjectsController extends AbstractController
     }
 
     /**
+     * @Route("/subject/{subjectId}", name="subject")
+     */
+    public function show(int $subjectId)
+    {
+        $subject = $this->subjects->findOneById($subjectId);
+        
+        // DO NOT FORGET
+        // if user est le prof de cette matière ou user est un etudiant de cette matière okk
+
+        return $this->render('subjects/show.html.twig', [
+            'subject' => $subject
+        ]);
+    }
+
+    /**
      * @Route("/subject/subscribe/{subjectId}", name="subject_subscribe")
      * 
      * Only students can access to this route

@@ -33,6 +33,9 @@
                                         {% if is_granted('ROLE_STUDENT') %}
                                             <td><a href="{{ path('subject_unsubscribe', { subjectId: subject.id }) }}" class="uk-button uk-button-default" type="button">Unsubscribe</a></td>
                                         {% endif %}
+                                        <td>
+                                            <a href="{{ path('subject', { subjectId: subject.id } )}}" class="uk-button uk-button-default" type="button">Show</a>
+                                        </td>
                                     </tr>
                                 {% endfor %}
                             {% else %}

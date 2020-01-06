@@ -22,6 +22,12 @@
                         {% else %}
                             <td><a href="{{ path('subject_subscribe', { subjectId: subject.id }) }}" class="uk-button uk-button-default" type="button">Subscribe</a></td>
                         {% endif %}
+                    {% elseif is_granted('ROLE_TEACHER') %}
+                        {% for user in subject.users %}
+                            {% if user == app.user %}
+                                <td><a href="{{ path('subject', { subjectId: subject.id } )}}" class="uk-button uk-button-default" type="button">Show</a></td>
+                            {% endif %}
+                        {% endfor %}
                     {% endif %}
                 </tr>
             {% endfor %}
