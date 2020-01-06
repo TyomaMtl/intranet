@@ -4,15 +4,6 @@
 
 {% block body %}
     <h1>{{ user.firstname }} {{ user.lastname }}</h1>
-    {% for role in user.roles %}
-        {% if role == 'ROLE_STUDENT' %}
-            <p>You are a student</p>
-        {% elseif role == 'ROLE_TEACHER' %}
-            <p>You are a teacher</p>
-        {% elseif role == 'ROLE_ADMIN' %}
-            <p>You are an administrator</p>
-        {% endif %}
-    {% endfor %}
     <div class="uk-grid">
         <div class="uk-width-1-5 uk-flex-last">
             <ul class="uk-tab-right" uk-tab="connect: #component-tab-right; animation: uk-animation-fade">
