@@ -4,8 +4,8 @@
 
 {% block body %}
 
-    {{ form(form) }}
-
-    <button>Save</button>
+    {{ form_start(form) }}
+        <button class="uk-button">Save</button>
+    {{ form_end(form) }}
 
 {% endblock %}
