@@ -31,4 +31,25 @@
     </tbody>
 </table>
 
+<table class="uk-table uk-table-middle uk-table-divider">
+    <thead>
+        <tr>
+            <th class="uk-width-small">Mark</th>
+            <th>Out of</th>
+            <th>Subject</th>
+            <th>Teacher</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for mark in user.marks %}
+            <tr>
+                <td>{{ mark.mark }}</td>
+                <td>{{ mark.outof }}</td>
+                <td>{{ mark.subject }}</td>
+                <td>{{ mark.teacher }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 {% endblock %}
