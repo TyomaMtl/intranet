@@ -5,11 +5,34 @@
 {% block body %}
 
     {{ form_start(form) }}
-        {{ form_row(form.firstname)}}
-        {{ form_row(form.lastname)}}
-        {{ form_row(form.email)}}
-        {{ form_row(form.roles)}}
-        {{ form_row(form.subjects)}}
+        <div class="uk-margin">
+            <div class="uk-inline">
+                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                {{ form_widget(form.firstname, { 'attr': { 'class': 'uk-input uk-form-width-large' }}) }}
+            </div>
+        </div>
+        <div class="uk-margin">
+            <div class="uk-inline">
+                <span class="uk-form-icon" uk-icon="icon: users"></span>
+                {{ form_widget(form.lastname, { 'attr': { 'class': 'uk-input uk-form-width-large' }}) }}
+            </div>
+        </div>
+        <div class="uk-margin">
+            <div class="uk-inline">
+                <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                {{ form_widget(form.email, { 'attr': { 'class': 'uk-input uk-form-width-large' }}) }}
+            </div>
+        </div>
+        <div class="uk-margin">
+            <div class="uk-inline">
+                {{ form_row(form.roles) }}
+            </div>
+        </div>
+        <div class="uk-margin">
+            <div class="uk-inline">
+                {{ form_row(form.subjects) }}
+            </div>
+        </div>
         <button class="uk-button">Save</button>
     {{ form_end(form) }}
 
