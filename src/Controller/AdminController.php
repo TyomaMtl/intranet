@@ -7,6 +7,7 @@ use App\Repository\SubjectRepository;
 use App\Repository\UserRepository;
 use App\Form\ManageUserType;
 use App\Form\SubjectType;
+use App\Repository\MarkRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,10 +21,11 @@ class AdminController extends AbstractController
     private $users;
     private $subjects;
 
-    public function __construct(UserRepository $users, SubjectRepository $subjects)
+    public function __construct(UserRepository $users, SubjectRepository $subjects, MarkRepository $marks)
     {
         $this->users = $users;
         $this->subjects = $subjects;
+        $this->marks = $marks;
     }
 
     /**
@@ -34,6 +36,7 @@ class AdminController extends AbstractController
         return $this->render('admin/index.html.twig', [
             'users' => $this->users->findAll(),
             'subjects' => $this->subjects->findAll(),
+            'marks' => $this->marks->findAll(),
         ]);
     }
 

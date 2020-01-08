@@ -9,7 +9,7 @@
             <ul class="uk-tab-right" uk-tab="connect: #component-tab-right; animation: uk-animation-fade">
                 <li><a href="#">Users</a></li>
                 <li><a href="#">Subjects</a></li>
-                <li><a class="uk-disabled" href="#">Item</a></li>
+                <li><a href="#">Marks</a></li>
             </ul>
         </div>
         <div class="uk-width-expand">
@@ -54,8 +54,40 @@
                         </tbody>
                     </table>
                 </li>
-                {# ITEM #}
-                <li></li>
+                <li>
+                    {# MARKS #}
+                    <table class="uk-table uk-table-middle uk-table-divider">
+                        <thead>
+                            <tr>
+                                <th>Mark</th>
+                                <th>Comment</th>
+                                <th>Student</th>
+                                <th>Teacher</th>
+                                <th>Date</th>
+                                <th>actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for mark in marks %}
+                            <tr>
+                                <td>{{ mark.mark }} / {{ mark.outof }}</td>
+                                <td>{{ mark.comment }}</td>
+                                <td>{{ mark.student }}</td>
+                                <td>{{ mark.teacher }}</td>
+                                <td>{{ mark.createdAt ? mark.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                                <td>
+                                    <a class="uk-button uk-button-default" href="{{ path('mark_show', {'id': mark.id}) }}">show</a>
+                                    <a class="uk-button uk-button-default" href="{{ path('mark_edit', {'id': mark.id}) }}">edit</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </li>
             </ul>
         </div>
     </div>

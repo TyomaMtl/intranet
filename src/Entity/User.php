@@ -57,6 +57,11 @@ class User implements UserInterface
      */
     private $marks;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Mark", mappedBy="teacher")
+     */
+    private $givenMarks;
+
     public function __construct()
     {
         $this->subjects = new ArrayCollection();
@@ -220,6 +225,14 @@ class User implements UserInterface
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Mark[]
+     */
+    public function getGivenMarks(): Collection
+    {
+        return $this->givenMarks;
     }
 
     public function __toString()
