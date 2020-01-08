@@ -37,14 +37,12 @@ class SubjectsController extends AbstractController
 
     /**
      * @Route("/subject/{subjectId}", name="subject")
+     * @IsGranted("ROLE_TEACHER")
      */
     public function show(int $subjectId)
     {
         $subject = $this->subjects->findOneById($subjectId);
         
-        // DO NOT FORGET
-        // if user est le prof de cette matière ou user est un etudiant de cette matière okk
-
         return $this->render('subjects/show.html.twig', [
             'subject' => $subject
         ]);

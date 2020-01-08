@@ -6,10 +6,20 @@
 
     <h1>{{ subject.name }}</h1>
 
+    <p>My students :</p>
     <ul>
         {% for user in subject.users %}
             {% if app.user != user %}
-                <li>{{ user.firstname }} {{ user.lastname }}</li>
+                <li>
+                    <p>{{ user.firstname }} {{ user.lastname }}</p>
+                    <p>
+                        <ul>
+                            {% for mark in user.marks %}
+                                <li>{{ mark.mark }} / {{ mark.outof }}</li>
+                            {% endfor %}
+                        </ul>
+                    </p>    
+                </li>
             {% endif %}
         {% endfor %}
     </ul>

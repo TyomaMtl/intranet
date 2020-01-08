@@ -30,11 +30,14 @@
                                         <td>{{ subject.name }}</td>
                                         <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</td>
                                         {% if is_granted('ROLE_STUDENT') %}
-                                            <td><a href="{{ path('subject_unsubscribe', { subjectId: subject.id }) }}" class="uk-button uk-button-default" type="button">Unsubscribe</a></td>
+                                            <td>
+                                                <a href="{{ path('subject_unsubscribe', { subjectId: subject.id }) }}" class="uk-button uk-button-default" type="button">Unsubscribe</a>
+                                            </td>
+                                        {% elseif is_granted('ROLE_TEACHER') %}
+                                            <td>
+                                                <a href="{{ path('subject', { subjectId: subject.id } )}}" class="uk-button uk-button-default" type="button">Show</a>
+                                            </td>
                                         {% endif %}
-                                        <td>
-                                            <a href="{{ path('subject', { subjectId: subject.id } )}}" class="uk-button uk-button-default" type="button">Show</a>
-                                        </td>
                                     </tr>
                                 {% endfor %}
                             {% else %}
