@@ -56,8 +56,7 @@ class SubjectsController extends AbstractController
      */
     public function subscribe(int $subjectId)
     {
-        $subject = $this->subjects->findById($subjectId);
-        $subject = $subject[0];
+        $subject = $this->subjects->findOneById($subjectId);
         
         $subject->addUser($this->user);
 
@@ -75,8 +74,7 @@ class SubjectsController extends AbstractController
      */
     public function unsubscribe(int $subjectId)
     {
-        $subject = $this->subjects->findById($subjectId);
-        $subject = $subject[0];
+        $subject = $this->subjects->findOneById($subjectId);
         
         $subject->removeUser($this->user);
 
